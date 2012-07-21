@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7c4eb2e2-9189-4455-b6f8-cf14daa65127" name="Service" linkedPackageId="c633a4fb-ee12-42c5-a937-e393e496ed83" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="09d783c7-8629-4fa8-8780-9ef36f293835">
+      <profileInstance Id="b1b0b8dc-16b9-413d-87b6-b2a4c7096fdf" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="982a5945-deec-4798-ac1c-7600ff0ac84b">
+      <profileInstance Id="02e340f7-adf7-4261-8038-0aae0b4a11f5" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="043d9beb-0194-454d-9ccf-dd214556dc44" name="Actor1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2959d097-68a8-494d-9796-2568363270e4" />
+        <targetEnds>
+          <association Id="91a2d94f-b3ce-46cd-8b8b-c2f5c5e801ac" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Register" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="fe0c5fb8-1ac6-4d9d-a010-72fa1f1c6ff3" LastKnownName="Register" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2e026373-4f8c-497c-b520-798f5535fe8b" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1fddedec-3c3c-4f54-8213-0e8087bfc2d4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="817b2ff2-6858-4f7f-8ccd-700523838af0" name="Register" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b7c3de37-ab9c-44ec-8bb3-04faed9131c6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="bfed61f7-7367-4d6b-8703-52487eb281bd" />
+          </association>
+          <association Id="5c705385-1927-48e4-8cbf-ef3f05063b22" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Log in" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8496c243-98e0-4ba5-bebc-97c37cd1a698" LastKnownName="Log in" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="20e0f4dd-4619-4ab5-93bf-f77de6b101c0" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ab18cd8e-c47b-4b53-8266-b4ad230ab330" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a0b2b838-773f-4aba-a455-074668c80167" name="Log in" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b87411b0-8463-41ef-a290-28babc166056" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="3436d12a-a9ae-4b8c-8a09-847222aee3ca" />
+          </association>
+          <association Id="00edec2c-ae25-47e1-9fe5-d7dd054a4a1d" isDerived="false" sourceEndRoleName="Actor1" targetEndRoleName="Reset password" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="cb9e5b4a-8f29-468c-b741-2a018b275505" LastKnownName="Reset password" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0363f703-bd98-44e1-ae1f-ece63fc1c11b" name="Actor1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f7037d29-6f24-4189-afed-3bebeafd45a3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0e18468b-49eb-45b9-9732-ae473cb71f90" name="Reset password" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e4c52a0f-e068-4baf-bd44-6cc4bbb21841" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="be4c3380-88dc-44f2-b30e-125fa8a7f6eb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="6dcb66ab-9b3b-4d16-bf13-3e245ddba99c" name="Authorisation module" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6b43459a-036a-473d-b11a-84a60d03724c" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="fe0c5fb8-1ac6-4d9d-a010-72fa1f1c6ff3" name="Register" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0f43b276-b501-4e23-a954-f93fa25cd1df" />
+        <subjects>
+          <subsystemMoniker Id="6dcb66ab-9b3b-4d16-bf13-3e245ddba99c" LastKnownName="Authorisation module" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="8496c243-98e0-4ba5-bebc-97c37cd1a698" name="Log in" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4c544015-72c5-4438-bca3-22d785709c25" />
+        <subjects>
+          <subsystemMoniker Id="6dcb66ab-9b3b-4d16-bf13-3e245ddba99c" LastKnownName="Authorisation module" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="cb9e5b4a-8f29-468c-b741-2a018b275505" name="Reset password" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="826eaf28-9921-4800-8b9a-05d399b57845" />
+        <subjects>
+          <subsystemMoniker Id="6dcb66ab-9b3b-4d16-bf13-3e245ddba99c" LastKnownName="Authorisation module" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="c633a4fb-ee12-42c5-a937-e393e496ed83" name="CloudUri.Core.Modeling">
+    <elementDefinition Id="89b416d3-ead0-484a-88db-d6f4199405bb" />
+  </package>
+</useCaseModelRoot>

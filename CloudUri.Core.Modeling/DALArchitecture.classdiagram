@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="ab420036-9129-467f-9f95-362ac381c10d" name="DALArchitecture" linkedPackageId="2ad49457-114d-4e8d-9062-8870e96091a0" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="8c61ac2c-db02-4c8a-aa67-83d3c903479c">
+      <profileInstance Id="3251de47-9c66-41b1-ba9a-650b9cc8faee" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f5f3561a-b883-47db-995e-80eb5542455a">
+      <profileInstance Id="0e5c61cd-2a0a-4a51-843f-e2c1b17c7d7f" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="ebcb47d2-e49f-4191-9bcd-babbf2e244d8" name="IDbWrapper" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="697adfc6-3f72-4690-88cc-2e807eba47aa" />
+        <ownedOperations>
+          <operation Id="8fdba177-90ac-40c0-a93d-75e54d5438d6" name="StoredProcedureExecuteScalar" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ccd61848-7979-461e-857c-fa9d9c1af1d2" />
+          </operation>
+          <operation Id="2b660db0-9c48-403e-a45c-a808c23df2a5" name="StoredProcedureExecuteReader" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3ccbe35b-3cea-4ef8-a3ee-17a6a174b6af" />
+          </operation>
+          <operation Id="0b6139c6-d899-409f-aad4-9624d85180f5" name="StoredProcedureExecuteNonQuery" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="12ed872c-ddce-41bf-a8b7-9b713e721664" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="44173005-5651-4b0f-a7da-6323f9762c80" name="DbWrapper" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="441d491d-610b-416e-928e-e1a87d38fbbd" />
+        <suppliersInternal>
+          <interfaceRealization Id="ddb87a03-402f-4c45-9db3-c6c59785b7a9">
+            <interfaceMoniker Id="ebcb47d2-e49f-4191-9bcd-babbf2e244d8" LastKnownName="IDbWrapper" />
+            <elementDefinition Id="bb53687c-c54b-4357-b19c-b3975d4b89ef" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="13717c73-eb04-4a90-8b1a-be0b0dac8322" name="StoredProcedureExecuteScalar" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="58633b7a-d55c-403d-bb3d-0f3c897fcb6f" />
+          </operation>
+          <operation Id="2d2a7179-e0a4-486e-bc5f-76df3ed6b2de" name="StoredProcedureExecuteReader" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="10eebbfe-fedf-4faf-8416-ac565872f037" />
+          </operation>
+          <operation Id="d85fa571-16a5-43f0-bc0b-503c30c2cf1a" name="StoredProcedureExecuteNonQuery" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="fce4244e-846c-4539-9a4c-6dfb573b16e1" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="06c3f599-04f7-43e5-b35d-7e591e0fd790" name="IRepository&lt;EntityType&gt; : where EntityType is IEntity " isAbstract="false" isLeaf="false">
+        <elementDefinition Id="16eedd8a-77c7-4394-80e9-e708213bf945" />
+        <suppliersInternal>
+          <dependency Id="ed0352d0-992f-4ab7-b77b-c6afec90c14f">
+            <interfaceMoniker Id="1d3fafbb-1b16-47e9-8110-c363e81b90f6" LastKnownName="IEntity" />
+            <elementDefinition Id="bdaa1a0a-28a0-4283-9c4f-55f7d1464f6a" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperations>
+          <operation Id="e5ffadeb-b210-4507-9b8b-2016785b0949" name="Add" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b1f520b4-ecb4-408c-a81c-6879412043d8" />
+          </operation>
+          <operation Id="8b870474-97b1-484a-a3f4-0a09f56847b3" name="Delete" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c86b544f-1783-4a29-a62b-02cb2a16c060" />
+          </operation>
+          <operation Id="ab9442eb-c9a6-4725-8836-a29efaa51379" name="GetById" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="52c47abb-b13e-4f5c-9045-6581099140e4" />
+          </operation>
+          <operation Id="9f347b5d-bd42-4f4b-957f-43b47dab5ad8" name="Count" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f86662b9-56dd-41b8-ac00-6877f714455b" />
+          </operation>
+          <operation Id="2be8581e-1cef-4697-9793-6ce4749d6a88" name="GetAll" isLeaf="false" isStatic="false" isAbstract="true" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e1b36bea-1f10-46ee-bd74-af1260c52c67" />
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a1156e68-1ac1-4ea6-9b9b-6056fe495f7b" name="RepositoryBase&lt;EntityType&gt; : where EntityType is IEntity " isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6ad580af-ef61-43ad-86d0-dc1524a109c1" />
+        <suppliersInternal>
+          <interfaceRealization Id="e5dc40b1-6f78-4f84-825d-a96ba5c1a5fc">
+            <interfaceMoniker Id="06c3f599-04f7-43e5-b35d-7e591e0fd790" LastKnownName="IRepository&lt;EntityType&gt; : where EntityType is IEntity " />
+            <elementDefinition Id="173645b3-220e-4e06-9e67-e4da8ffaa22b" />
+          </interfaceRealization>
+          <dependency Id="01757d8d-4aa0-4307-a496-1b86f4200ff1">
+            <interfaceMoniker Id="ebcb47d2-e49f-4191-9bcd-babbf2e244d8" LastKnownName="IDbWrapper" />
+            <elementDefinition Id="243a3eb8-6969-4d1b-9d09-28bdd88a973e" />
+          </dependency>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation Id="1006425a-8db9-4d22-80ba-d40db4ce0acc" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8f3bb359-e608-46e2-af6d-076a8a73608c" />
+          </operation>
+          <operation Id="501853e0-d723-46ca-a0f5-f8d8e630ea78" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="8f96aa60-3bc6-41e1-bd63-35039a4f528c" />
+          </operation>
+          <operation Id="1a8f4059-c1e3-4a6a-b62c-8128f8aee4f7" name="GetById" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7a67d9e9-04e4-4780-8020-e68753442678" />
+          </operation>
+          <operation Id="e2c62f02-7e18-48e1-97ee-e7345de5cdd3" name="Count" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ed40aff3-517c-4fcf-9e6e-159dda145306" />
+          </operation>
+          <operation Id="3a8fd990-9cbe-4e44-addf-a02092efa7fb" name="GetAll" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="298938ba-ae18-481c-a4b0-bef449d2f541" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="1d3fafbb-1b16-47e9-8110-c363e81b90f6" name="IEntity" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aa3f7df4-2082-4a71-b22c-2032ae1da3ea" />
+        <ownedAttributes>
+          <property Id="c9edf37b-def3-40ae-9195-8a055e5c5044" name="Id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a8f091bf-eb7d-444d-b6d7-45c5a5710fe8" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="c1c955c4-51f5-447e-a800-b1647520a9e5" name="ConcreteEntity1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="56cb4eb4-18dd-4e85-8944-10fb33fe3a70" />
+        <generalsInternal>
+          <generalization Id="d51c3ff2-21ba-4558-ac33-31e68b929736" isSubstitutable="false">
+            <interfaceMoniker Id="1d3fafbb-1b16-47e9-8110-c363e81b90f6" LastKnownName="IEntity" />
+            <elementDefinition Id="5871a0e3-d20a-4165-875e-2b1ae0995c27" />
+          </generalization>
+        </generalsInternal>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="67c734dc-34b4-488c-ae99-3b1241d3a3c5" name="IConcreteRepository1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4b5c5038-f1be-43ac-9676-40b93e451d9b" />
+        <suppliersInternal>
+          <dependency Id="573fbff0-1ae3-44f5-b801-e9d41d967622">
+            <interfaceMoniker Id="c1c955c4-51f5-447e-a800-b1647520a9e5" LastKnownName="ConcreteEntity1" />
+            <elementDefinition Id="2113e106-0b0b-43a1-9f08-14f8b88c024f" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="b09303ad-ba92-4234-8eec-801ea3a0f75a" isSubstitutable="false">
+            <interfaceMoniker Id="06c3f599-04f7-43e5-b35d-7e591e0fd790" LastKnownName="IRepository&lt;EntityType&gt; : where EntityType is IEntity " />
+            <elementDefinition Id="f9b838ad-ae03-45f0-9d6a-c47b95f7a3ce" />
+          </generalization>
+        </generalsInternal>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="cee6ad9b-7c34-439f-adfd-09629fb2e379" name="ConcreteRepository1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="628505c3-601d-4dd9-9d48-dfa267133159" />
+        <suppliersInternal>
+          <interfaceRealization Id="af878555-1bb7-48a3-95c1-7b2db6e8484c">
+            <interfaceMoniker Id="67c734dc-34b4-488c-ae99-3b1241d3a3c5" LastKnownName="IConcreteRepository1" />
+            <elementDefinition Id="b712ca99-d346-49a9-be89-a96d787924f0" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="b21ba5ef-8b0a-45ad-a5f9-bddcae0005aa" isSubstitutable="false">
+            <classMoniker Id="a1156e68-1ac1-4ea6-9b9b-6056fe495f7b" LastKnownName="RepositoryBase&lt;EntityType&gt; : where EntityType is IEntity " />
+            <elementDefinition Id="57c60667-08b4-41df-98ed-ccbf7e355c31" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="2d5571c0-5d53-4b2d-b398-d47e2004bd1e" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="0fbae99b-e6fd-4874-88ae-11d7536c1668" />
+          </operation>
+          <operation Id="9f2d5b64-7665-4be4-94af-40d9ce31b01d" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="c45c9044-0196-44ba-ba19-6a0c667fe9af" />
+          </operation>
+          <operation Id="6537762a-9437-466e-a8bd-61700c2d353a" name="GetById" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="076579c4-0c62-469e-a8f9-5729ffba8c2d" />
+          </operation>
+          <operation Id="4c1a308d-4b4f-4f52-95e8-2a9c99643337" name="Count" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b9052f46-23f9-43dc-848a-f39d2e4fe98d" />
+          </operation>
+          <operation Id="a3d4c989-fd62-48ed-9e6d-a5769c9a5f92" name="GetAll" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9d550904-0062-4a33-95fd-63f42277e92d" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="82ec1e18-2278-4b40-9e4f-f001f67fb5c6" name="ConcreteEntity2" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3fecd689-1ca8-42b9-844a-810669ae16a2" />
+        <generalsInternal>
+          <generalization Id="85ea8dac-b4c9-47c7-a66c-9c0b3309d4a4" isSubstitutable="false">
+            <interfaceMoniker Id="1d3fafbb-1b16-47e9-8110-c363e81b90f6" LastKnownName="IEntity" />
+            <elementDefinition Id="6149296c-c10b-49f2-96d9-f382143f03db" />
+          </generalization>
+        </generalsInternal>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="cfe32a22-4f96-4904-978c-3e5c4967f194" name="IConcreteRepository2" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7d4b4848-07ba-4b76-9391-8d7a23d0d71a" />
+        <suppliersInternal>
+          <dependency Id="2bf2c9f4-bd6d-45d2-a0e5-3dfb4e5d92cb">
+            <interfaceMoniker Id="82ec1e18-2278-4b40-9e4f-f001f67fb5c6" LastKnownName="ConcreteEntity2" />
+            <elementDefinition Id="db5bccc8-e58f-4464-aa57-6f4f47ec12bf" />
+          </dependency>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="cacc2402-0d04-4ff4-b788-26047afbdea5" isSubstitutable="false">
+            <interfaceMoniker Id="06c3f599-04f7-43e5-b35d-7e591e0fd790" LastKnownName="IRepository&lt;EntityType&gt; : where EntityType is IEntity " />
+            <elementDefinition Id="ed3cabf6-b4d1-4105-86a9-492184020623" />
+          </generalization>
+        </generalsInternal>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="514953d4-59d9-4eab-82ec-5d228343ab39" name="ConcreteRepository2" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e948d405-1e16-4741-a27b-0ea3f990747d" />
+        <suppliersInternal>
+          <interfaceRealization Id="30ea7623-7463-42d3-a430-0b20e823e3bf">
+            <interfaceMoniker Id="cfe32a22-4f96-4904-978c-3e5c4967f194" LastKnownName="IConcreteRepository2" />
+            <elementDefinition Id="d1e0b542-2c4f-4101-970b-3b68f8131813" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <generalsInternal>
+          <generalization Id="4174aff2-e3b1-49f7-aaaa-b4301e929df3" isSubstitutable="false">
+            <classMoniker Id="a1156e68-1ac1-4ea6-9b9b-6056fe495f7b" LastKnownName="RepositoryBase&lt;EntityType&gt; : where EntityType is IEntity " />
+            <elementDefinition Id="2d11a9f2-0d2a-40af-b4c1-0104b664388e" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="5f0ff1ee-681a-4d3a-a577-135cd8051c55" name="Add" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e822e212-fef6-4db0-9ec1-7c711f6684c7" />
+          </operation>
+          <operation Id="7dd30684-29a2-47a6-9dec-7d5d0b40009b" name="Delete" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e9802351-a323-402d-8247-ec89bd0a197f" />
+          </operation>
+          <operation Id="fe7cebf0-392a-4f3f-8f74-d55f28dfb55d" name="GetById" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9cb8ee6f-4438-4885-a752-9f26d12cf3b7" />
+          </operation>
+          <operation Id="bc8b1aee-5d5b-4579-9f2f-e0588de75cae" name="Count" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3c0feffe-9f7c-4965-99b0-1451b0889cfb" />
+          </operation>
+          <operation Id="e1cac93a-1151-4385-8a31-4eee57c9f94b" name="GetAll" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3d700df2-83d3-4f4b-bd42-2005b2a56a5b" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <Interface Id="b361fd48-d9c4-4077-b2ba-dd6703d52e18" name="IDALContext" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3d4e7205-a110-4303-bd4e-85cc2719df37" />
+        <targetEnds>
+          <association Id="c5bff120-94e4-4dff-99ca-27cd2add4443" isDerived="false" sourceEndRoleName="IDALContext" targetEndRoleName="IConcreteRepository2" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="cfe32a22-4f96-4904-978c-3e5c4967f194" LastKnownName="IConcreteRepository2" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8b857c2a-5286-4d80-8400-9ae01c8b1e97" name="IDALContext" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9bcbb960-3a06-4e47-8d31-e5a1d1b879c2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2f225c2b-af26-43f6-a69f-146b07286be9" name="IConcreteRepository2" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="41149802-b7e5-443f-9544-30dde46c1f10" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="91ab678a-9882-44e1-ab97-dfe4df76992b" />
+          </association>
+          <association Id="0108fec2-27d4-4f17-8879-614ac009c500" isDerived="false" sourceEndRoleName="IDALContext" targetEndRoleName="IConcreteRepository1" isLeaf="false" isAbstract="false">
+            <interfaceMoniker Id="67c734dc-34b4-488c-ae99-3b1241d3a3c5" LastKnownName="IConcreteRepository1" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="557d63cd-8a73-4e89-a892-bc7429d5f660" name="IDALContext" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Shared" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e458492f-6ac6-400c-be0e-596cb59c4697" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6a9ff2b5-6701-4a84-bf4c-6b85f32b6a07" name="IConcreteRepository1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="814e07f2-a7f3-48e5-a1a5-6ffd9189ae4d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7a777bda-fcd5-403f-baeb-ba720600fbd6" />
+          </association>
+        </targetEnds>
+        <ownedAttributes>
+          <property Id="7cba4e5b-f533-459b-9d67-7531e06238e5" name="IConcreteRepository1" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="56608f95-8556-4538-bc7c-a3dce07fd817" />
+          </property>
+          <property Id="1e9634e0-a4d3-49a6-9ac6-e51849cf417c" name="IConcreteRepository2" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="90431726-65ef-4d8d-9140-8b07b9afaf0e" />
+          </property>
+        </ownedAttributes>
+      </Interface>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4e8855ff-e847-44cc-b491-bb03c6988ebc" name="DALContext" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="e5cfce78-3889-4b76-bd7d-6c0a97132074" />
+        <suppliersInternal>
+          <interfaceRealization Id="9c993d62-f98f-46c7-9b59-7c7447b03413">
+            <interfaceMoniker Id="b361fd48-d9c4-4077-b2ba-dd6703d52e18" LastKnownName="IDALContext" />
+            <elementDefinition Id="913243c8-2f5d-4c6d-ab5f-7304ec5dd45e" />
+          </interfaceRealization>
+        </suppliersInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="2ad49457-114d-4e8d-9062-8870e96091a0" name="CloudUri.Core.Modeling">
+    <elementDefinition Id="89b416d3-ead0-484a-88db-d6f4199405bb" />
+  </package>
+</logicalClassDesignerModel>

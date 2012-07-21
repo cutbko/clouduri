@@ -1,0 +1,10 @@
+﻿@model CloudUri.Web.ViewModels.SignInViewModel
+
+@using (Html.BeginForm("SignIn", "Profile", FormMethod.Post))
+{
+    @Html.TextBoxFor(x => x.UserName, new { placeholder="Username", size = "30" })
+    @Html.PasswordFor(x => x.Password, new { placeholder = "Password", size = "30", style="display: block" })
+    @Html.CheckBoxFor(x=>x.StayLoggedIn, new { style="float: left; margin-right: 10px;" })
+    @Html.LabelFor(x => x.StayLoggedIn)
+    <input class="btn btn-primary" style="margin-left: 0px; float: left; width: 220px; height: 32px; font-size: 13px;" type="submit" value="Sign In" />
+}

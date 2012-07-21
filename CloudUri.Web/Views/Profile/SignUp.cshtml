@@ -1,0 +1,31 @@
+﻿@model CloudUri.Web.ViewModels.SingUpViewModel
+
+@{
+    ViewBag.Title = "Sign up";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>Sign up</h2>
+<div>
+@using (Html.BeginForm())
+    {
+        @Html.LabelFor(x => x.UserName)
+        @Html.TextBoxFor(x => x.UserName)
+        @Html.ValidationMessageFor(x=>x.UserName)
+
+        @Html.LabelFor(x => x.Email)
+        @Html.TextBoxFor(x => x.Email)
+        @Html.ValidationMessageFor(x => x.Email)
+
+        @Html.LabelFor(x => x.Password)
+        @Html.PasswordFor(x => x.Password)       
+        @Html.ValidationMessageFor(x => x.Password) 
+            
+        @Html.LabelFor(x => x.PasswordConfirm)
+        @Html.PasswordFor(x => x.PasswordConfirm)
+        @Html.ValidationMessageFor(x => x.PasswordConfirm)
+
+        <input type="submit"/>
+        @Html.ValidationSummary()
+    }
+</div>

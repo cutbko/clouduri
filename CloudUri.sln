@@ -1,0 +1,108 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.DAL", "CloudUri.DAL\CloudUri.DAL.csproj", "{91145CCD-7E70-4570-83D8-77941EB24825}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3DC20A7B-0993-46A4-BCB8-E271AF6EA4A7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.SAL", "CloudUri.SAL\CloudUri.SAL.csproj", "{327FAE37-EEF6-41D1-B292-9D69C72B65D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.Web", "CloudUri.Web\CloudUri.Web.csproj", "{613D683E-D833-4D13-B12E-8C5329802558}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.DAL.Tests", "CloudUri.DAL.Tests\CloudUri.DAL.Tests.csproj", "{B9388C18-5E67-400C-AF9C-8279E0263873}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4886169B-8E7E-448B-BD09-D3CD93642A71}"
+	ProjectSection(SolutionItems) = preProject
+		CloudUri.vsmdi = CloudUri.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.SAL.Tests", "CloudUri.SAL.Tests\CloudUri.SAL.Tests.csproj", "{A54AE366-D451-400D-AC1C-8A5BC52D4CC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.Web.Tests", "CloudUri.Web.Tests\CloudUri.Web.Tests.csproj", "{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97}"
+EndProject
+Project("{C8D11400-126E-41CD-887F-60BD40844F9E}") = "CloudUri.DB", "CloudUri.DB\CloudUri.DB.dbproj", "{67CBC824-A49E-4E9B-A947-360F3DFE65C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.Common", "CloudUri.Common\CloudUri.Common.csproj", "{1192E8DD-EFCA-4267-A72A-725788E10DCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.Common.Tests", "CloudUri.Common.Tests\CloudUri.Common.Tests.csproj", "{D451884C-C05A-4041-9A73-75911DACD4DE}"
+EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "CloudUri.Core.Modeling", "CloudUri.Core.Modeling\CloudUri.Core.Modeling.modelproj", "{D6E1973B-CA60-4311-973A-FEBC614F8686}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{3647B913-D711-4490-9E3C-3B2D482F9B95}"
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CloudUri.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{91145CCD-7E70-4570-83D8-77941EB24825}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91145CCD-7E70-4570-83D8-77941EB24825}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91145CCD-7E70-4570-83D8-77941EB24825}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91145CCD-7E70-4570-83D8-77941EB24825}.Release|Any CPU.Build.0 = Release|Any CPU
+		{327FAE37-EEF6-41D1-B292-9D69C72B65D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{327FAE37-EEF6-41D1-B292-9D69C72B65D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{327FAE37-EEF6-41D1-B292-9D69C72B65D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{327FAE37-EEF6-41D1-B292-9D69C72B65D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{613D683E-D833-4D13-B12E-8C5329802558}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{613D683E-D833-4D13-B12E-8C5329802558}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{613D683E-D833-4D13-B12E-8C5329802558}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{613D683E-D833-4D13-B12E-8C5329802558}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9388C18-5E67-400C-AF9C-8279E0263873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9388C18-5E67-400C-AF9C-8279E0263873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9388C18-5E67-400C-AF9C-8279E0263873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9388C18-5E67-400C-AF9C-8279E0263873}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67CBC824-A49E-4E9B-A947-360F3DFE65C3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1192E8DD-EFCA-4267-A72A-725788E10DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1192E8DD-EFCA-4267-A72A-725788E10DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1192E8DD-EFCA-4267-A72A-725788E10DCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1192E8DD-EFCA-4267-A72A-725788E10DCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D451884C-C05A-4041-9A73-75911DACD4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D451884C-C05A-4041-9A73-75911DACD4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D451884C-C05A-4041-9A73-75911DACD4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D451884C-C05A-4041-9A73-75911DACD4DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D451884C-C05A-4041-9A73-75911DACD4DE} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+		{B9388C18-5E67-400C-AF9C-8279E0263873} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35
+	EndGlobalSection
+EndGlobal
