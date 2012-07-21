@@ -49,6 +49,7 @@
     <Compile Include="Services\IAccountService.cs" />
     <Compile Include="Services\IDevicesService.cs" />
     <Compile Include="Services\Stubs\AccountServiceStub.cs" />
+    <Compile Include="Services\Stubs\DevicesServiceStub.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudUri.Common\CloudUri.Common.csproj">
