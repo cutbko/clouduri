@@ -1,5 +1,4 @@
-﻿@model CloudUri.Web.ViewModels.DevicesViewModel
-
+﻿@model System.Collections.Generic.List<CloudUri.DAL.Entities.Device>
 @{
     ViewBag.Title = "Devices";
     Layout = "../Shared/_Layout.cshtml";
@@ -10,7 +9,28 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            
+           <td> Type</td>
+           <td> Name</td>
+           <td> </td>
         </tr>
     </thead>
+    <tbody>
+            @foreach (CloudUri.DAL.Entities.Device device in Model)
+            {
+                <tr>
+                    <td>@device.Type.Name</td>
+                    <td>@device.Name</td>
+                    <td>
+                        <a class="btn" href="@Url.Action("Edit", new { id = device.Key })">
+                            <i class="icon-edit"></i>
+                            Edit
+                        </a>
+                        <a class="btn btn-danger" href="@Url.Action("Delete", new { id = device.Key })">
+                            <i class="icon-trash icon-white" ></i>
+                            Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+    </tbody>
 </table>

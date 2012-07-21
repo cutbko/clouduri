@@ -7,8 +7,6 @@ namespace CloudUri.Web.ViewModels
     {
         public List<DeviceType> DeviceTypes { get; set; }
 
-        public List<Device> Devices { get; set; }
-
-
+        public Device CurrentDevice { get; set; }
     }
 }

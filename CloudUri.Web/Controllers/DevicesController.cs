@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CloudUri.DAL.Entities;
 using CloudUri.SAL.Services;
 using CloudUri.Web.Security;
 using CloudUri.Web.ViewModels;
@@ -23,10 +24,44 @@ namespace CloudUri.Web.Controllers
 
         public ActionResult Index()
         {
-            DevicesViewModel model = new DevicesViewModel();
             var name = User.Identity.Name;
-            return View(model);
+            List<Device> devices = _deviceService.GetDevicesByUsername(name);
+            return View(devices);
         }
 
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            Device dev = _deviceService.GetDeviceById(id);
+            DevicesViewModel devicesViewModel = new DevicesViewModel
+                                                    {
+                                                        CurrentDevice = dev,
+                                                        DeviceTypes = _deviceService.GetDeviceTypes()
+                                                    };
+            return View(devicesViewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(DevicesViewModel deviceViewModel)
+        {
+            bool result = _deviceService.UpdateDevice(deviceViewModel.CurrentDevice);
+
+            if (result)
+            {
+                ViewBag.Result = "Success";
+                return RedirectToAction("Index");
+            }
+            ViewBag.Result = "Fail";
+            return View(deviceViewModel);
+        }
+
+        public ActionResult Delete(int id)
+        {
+            bool result = _deviceService.DeleteDevice(id);
+            ViewBag.Result = result 
+                ? "Success" 
+                : "Fail";
+            return RedirectToAction("Index");
+        }
     }
 }
