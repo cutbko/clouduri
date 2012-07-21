@@ -105,6 +105,7 @@
     <Compile Include="Security\CloudPrincipal.cs" />
     <Compile Include="Security\SecureController.cs" />
     <Compile Include="Security\SimpleSessionPersister.cs" />
+    <Compile Include="ViewModels\DevicesViewModel.cs" />
     <Compile Include="ViewModels\SignInViewModel.cs" />
     <Compile Include="ViewModels\SingUpViewModel.cs" />
   </ItemGroup>

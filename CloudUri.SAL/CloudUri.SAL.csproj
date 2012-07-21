@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IAccountService.cs" />
+    <Compile Include="Services\IDevicesService.cs" />
     <Compile Include="Services\Stubs\AccountServiceStub.cs" />
   </ItemGroup>
   <ItemGroup>
