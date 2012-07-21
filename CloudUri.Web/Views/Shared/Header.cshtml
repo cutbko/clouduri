@@ -1,4 +1,5 @@
-﻿<header class="navbar">
+﻿@using CloudUri.Web.HtmlHelpers
+<header class="navbar">
 	<div class="navbar-inner">
 		<div class="container">
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -9,15 +10,15 @@
             @Html.ActionLink("CLOUDY LINK","Index","About",new{}, new {@class = "brand"})
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li class="active">
+                    <li @Html.MenuClass("About")>
                         @Html.ActionLink("About project", "Index", "About")
                     </li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>
+                        <li @Html.MenuClass("Feed")>
                             @Html.ActionLink("Your feed", "Index", "Feed")
                         </li>
-                        <li>
+                        <li @Html.MenuClass("Devices")>
                             @Html.ActionLink("Manage devices", "Index", "Devices")
                         </li>
                     }

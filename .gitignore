@@ -1,6 +1,15 @@
 # Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 bin
 obj
+packages
+_ReSharper.CloudUri
+*.suo
+*.user
+debug
+logs
+*.dbmdl
+CloudUri.Web.Publish.xml
+*.schemaview
 
 # mstest test results
 TestResults
