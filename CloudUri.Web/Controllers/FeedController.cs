@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CloudUri.Web.Security;
+using CloudUri.Web.ViewModels;
 
 namespace CloudUri.Web.Controllers
 {
@@ -14,8 +15,14 @@ namespace CloudUri.Web.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            FeedViewModel feedViewModel = new FeedViewModel();
+            return View(feedViewModel);
         }
 
+        public ActionResult Index(string device)
+        {
+            FeedViewModel feedViewModel = new FeedViewModel();
+            return View(feedViewModel);
+        }
     }
 }

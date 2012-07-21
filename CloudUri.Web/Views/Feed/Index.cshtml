@@ -1,4 +1,4 @@
-﻿@model dynamic
+﻿@model CloudUri.Web.ViewModels.FeedViewModel
 
 @{
     ViewBag.Title = "Your feed";
@@ -6,3 +6,19 @@
 }
 
 <h2>Your feed goes here</h2>
+
+<div class="row-fluid">
+    <div class="span3">
+        <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Device types</li>
+                @foreach (var item in Model.DeviceTypes)
+                {
+                    <li>
+                        
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

@@ -38,6 +38,13 @@ footer{
 	background-color:#DEDEDE;
 }
 
+/* Navigation bar style
+-----------------------------------------------------------*/
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
