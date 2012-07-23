@@ -29,6 +29,7 @@ namespace CloudUri.Web
             container.RegisterType<IDALContext, SqlDALContext>();
             container.RegisterType<IAccountService, AccountServiceStub>();
             container.RegisterType<IDevicesService, DevicesServiceStub>();
+            container.RegisterType<IFeedsService, FeedsServiceStub>();
 
             return container;
         }

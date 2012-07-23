@@ -26,6 +26,16 @@ namespace CloudUri.Web
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                "FeedByDevice",
+                "Feed/{deviceType}",
+                new { controller = "Feed", action = "Index", deviceType = "All", page = 1 });
+
+            routes.MapRoute(
+                "FeedByDeviceWithPages",
+                "Feed/{deviceType}/Page{page}",
+                new {controller = "Feed", action = "Index", deviceType = "All", page = 1 });
+
+            routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "About", action = "Index", id = UrlParameter.Optional } // Parameter defaults

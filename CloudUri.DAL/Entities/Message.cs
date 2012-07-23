@@ -1,3 +1,5 @@
+using System;
+
 namespace CloudUri.DAL.Entities
 {
     /// <summary>
@@ -52,5 +54,10 @@ namespace CloudUri.DAL.Entities
         /// Expands reciever device by ToId field
         /// </value>
         public Device RecieverDevice { get; set; }
+
+        /// <summary>
+        /// Gets or sets creation date
+        /// </summary>
+        public DateTime CreatedOn { get; set; }
     }
 }

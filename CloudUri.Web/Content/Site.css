@@ -105,3 +105,24 @@ textarea
 {
     display: none;
 }
+
+/*Message
+-----------------------------------------*/
+.message-header div {
+    margin: 6px;    
+}
+.message-header {
+    float: none;
+    display: inline
+}
+.message-time {
+    float: left;
+}
+
+.message-from {
+    float: left;
+}
+
+.message-body {
+    margin: 6px;
+}
