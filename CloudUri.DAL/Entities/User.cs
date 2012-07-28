@@ -7,8 +7,56 @@ namespace CloudUri.DAL.Entities
     /// <summary>
     /// Entity for Users table
     /// </summary>
-    public class User : IEntity
+    public class User : IEntity, IEquatable<User>
     {
+        #region Equality members
+
+        /// <summary>
+        /// Indicates whether the current object is equal to another object of the same type.
+        /// </summary>
+        /// <returns>
+        /// true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
+        /// </returns>
+        /// <param name="other">An object to compare with this object.</param>
+        public bool Equals(User other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Key == other.Key && string.Equals(Username, other.Username) && string.Equals(Email, other.Email);
+        }
+
+        /// <summary>
+        /// Serves as a hash function for a particular type. 
+        /// </summary>
+        /// <returns>
+        /// A hash code for the current <see cref="T:System.Object"/>.
+        /// </returns>
+        /// <filterpriority>2</filterpriority>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                int hashCode = Key;
+                hashCode = (hashCode*397) ^ (Username != null ? Username.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Email != null ? Email.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (PasswordHash != null ? PasswordHash.GetHashCode() : 0);
+                hashCode = (hashCode*397) ^ (Salt != null ? Salt.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(User left, User right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(User left, User right)
+        {
+            return !Equals(left, right);
+        }
+
+        #endregion
+
         /// <summary>
         /// Initializes new instance of the <see cref="User"/> class
         /// </summary>
@@ -98,6 +146,14 @@ namespace CloudUri.DAL.Entities
         /// Match to all roles of current user
         /// </value>
         public IList<Role> Roles { get; private set; }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((User) obj);
+        }
 
     }
 }

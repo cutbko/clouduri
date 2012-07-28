@@ -69,7 +69,12 @@ namespace CloudUri.Web
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
                 SimpleSessionPersister.Username = authTicket.Name;
-                SimpleSessionPersister.Roles = DependencyResolver.Current.GetService<IAccountService>().GetRolesForUser(authTicket.Name);
+                string errorMessage;
+                SimpleSessionPersister.Roles = DependencyResolver.Current.GetService<IAccountService>().GetRolesForUser(authTicket.Name, out errorMessage);
+                if (errorMessage != null)
+                {
+                    Logger.Log.Error(errorMessage);
+                }
             }
         }
     }

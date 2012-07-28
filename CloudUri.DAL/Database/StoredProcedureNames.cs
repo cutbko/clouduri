@@ -19,6 +19,14 @@
 
         public const string UserCount = "Users_Count";
 
+        public const string AddRoleToUser = "User_AddRole";
+
+        public const string UserNameExists = "User_NameExists";
+
+        public const string UserEmailExists = "User_EmailExists";
+
+        public const string UserGetByName = "Users_GetByName";
+
         #endregion
 
         #region Device types
@@ -82,6 +90,8 @@
         public const string RoleGetById = "Roles_GetById";
 
         public const string RoleCount = "Roles_Count";
+
+        public const string RolesGetForUser = "Roles_GetForUser";
 
         #endregion
     }

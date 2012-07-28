@@ -23,7 +23,7 @@
                     @foreach (var item in Model.DeviceTypes)
                     {
                         <li @Html.LiActive(item, Model.SelectedDeviceType)>
-                            @Ajax.ActionLink(item, "Index", new { deviceType = item }, new AjaxOptions{Confirm = "her"})
+                            @Html.ActionLink(item, "Index", new { deviceType = item })
                         </li>
                     }
                 </ul>
