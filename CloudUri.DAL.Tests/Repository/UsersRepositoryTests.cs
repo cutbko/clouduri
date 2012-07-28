@@ -46,10 +46,10 @@ namespace CloudUri.DAL.Tests.Repository
         {
             List<DbParam> expectedParametersForInserting = new List<DbParam>
                        {
-                           new DbParam { Name = "@Username", Value = _user.Username },
-                           new DbParam { Name = "@Email", Value = _user.Email },
-                           new DbParam { Name = "@PasswordHash", Value = _user.PasswordHash },
-                           new DbParam { Name = "@Salt", Value = _user.Salt }
+                           new DbParam { Name = "@Username", Value = _user.Username, Type = SqlDbType.NVarChar},
+                           new DbParam { Name = "@Email", Value = _user.Email, Type = SqlDbType.NVarChar },
+                           new DbParam { Name = "@PasswordHash", Value = _user.PasswordHash, Type = SqlDbType.NVarChar },
+                           new DbParam { Name = "@Salt", Value = _user.Salt, Type = SqlDbType.NVarChar }
                        };
 
 

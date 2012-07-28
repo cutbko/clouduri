@@ -5,13 +5,14 @@
     Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>Sign up</h2>
-<div>
-@using (Html.BeginForm())
+<div class="centeredContainer">
+    <h2>Sign up</h2>
+    @using (Html.BeginForm())
     {
+        @Html.ValidationSummary(true)
         @Html.LabelFor(x => x.UserName)
         @Html.TextBoxFor(x => x.UserName)
-        @Html.ValidationMessageFor(x=>x.UserName)
+        @Html.ValidationMessageFor(x => x.UserName)
 
         @Html.LabelFor(x => x.Email)
         @Html.TextBoxFor(x => x.Email)
@@ -24,8 +25,7 @@
         @Html.LabelFor(x => x.PasswordConfirm)
         @Html.PasswordFor(x => x.PasswordConfirm)
         @Html.ValidationMessageFor(x => x.PasswordConfirm)
-
-        <input type="submit"/>
-        @Html.ValidationSummary()
+        <br/>
+        <button type="submit" class="btn btn-primary">Sign up!</button>
     }
 </div>

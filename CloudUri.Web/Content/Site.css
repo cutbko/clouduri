@@ -48,6 +48,22 @@ footer{
 /* Styles for basic forms
 -----------------------------------------------------------*/
 
+.centeredContainer 
+{
+    padding: 30px 0px 30px 50px;
+    min-width: 300px;
+    background-color: rgb(242,242,242);
+   
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -150px;
+    margin-top: -150px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px; 
+}
+
 fieldset 
 {
     border:1px solid #ddd;
@@ -82,6 +98,7 @@ textarea
 .field-validation-error
 {
     color: #ff0000;
+    margin: 6px;
 }
 
 .field-validation-valid
@@ -99,6 +116,7 @@ textarea
 {
     font-weight: bold;
     color: #ff0000;
+    margin: 6px 6px 6px -12px;
 }
 
 .validation-summary-valid
