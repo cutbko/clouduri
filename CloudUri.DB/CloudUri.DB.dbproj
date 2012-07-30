@@ -121,6 +121,28 @@
     <Folder Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository" />
     <Folder Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\RolesRepository" />
     <Folder Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\UsersRepository" />
+    <Folder Include="Schema Objects\Schemas\Test\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Defaults\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Functions\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Rules\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Stored Procedures\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Types\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Types\User Defined Data Types\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Types\User Defined Types CLR\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Types\User Defined Table Types\" />
+    <Folder Include="Schema Objects\Schemas\Test\Programmability\Types\XML Schema Collections\" />
+    <Folder Include="Schema Objects\Schemas\Test\Synonyms\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\Constraints\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\Keys\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\Test\Tables\Statistics\" />
+    <Folder Include="Schema Objects\Schemas\Test\Views\" />
+    <Folder Include="Schema Objects\Schemas\Test\Views\Indexes\" />
+    <Folder Include="Schema Objects\Schemas\Test\Views\Triggers\" />
+    <Folder Include="Schema Objects\Schemas\Test\Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <PropertiesFile Include="Properties\Database.sqlsettings">
@@ -344,6 +366,21 @@
       <SubType>Code</SubType>
     </Build>
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\RolesRepository\Roles_GetForUser.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\DevicesRepository\Devices_GetForUser.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Database Level Objects\Security\Schemas\Test.schema.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\Test\Programmability\Stored Procedures\FillUserCutbko.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUser.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_PagesTotalForUser.proc.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

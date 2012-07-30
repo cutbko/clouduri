@@ -17,7 +17,7 @@ namespace CloudUri.Web.Controllers
     public class FeedController : SecureController
     {
         private const string All = "All";
-        private const int ItemsPerPage = 10;
+        private const int ItemsPerPage = 5;
 
         private readonly IFeedsService _feedsService;
         private readonly IDevicesService _devicesService;
@@ -30,28 +30,29 @@ namespace CloudUri.Web.Controllers
 
         //
         // GET: /Feed/
-        public ActionResult Index(string deviceType, int page = 1)
+        public ViewResult Index(string sendingDevice, string receivingDevice, int page = 1)
         {
-            List<DeviceType> deviceTypesForUser = _devicesService.GetDeviceTypesForUser(User.Identity.Name);
-
+            List<Device> devicesForUser = _devicesService.GetDevicesForUser(User.Identity.Name);
             int pagesTotal;
-            List<Message> messagesForUser = deviceType != All ? _feedsService.GetMessagesForUser(User.Identity.Name, deviceType, ItemsPerPage, page, out pagesTotal)
-                : _feedsService.GetMessagesForUser(User.Identity.Name, ItemsPerPage, page, out pagesTotal);
 
-            List<string> deviceTypes = new List<string> { All };
-            deviceTypes.AddRange(deviceTypesForUser.Select(x => x.Name));
+            List<Message> messagesForUser =  _feedsService.GetMessagesForUser(User.Identity.Name, sendingDevice == All ? null : sendingDevice, receivingDevice == All ? null : receivingDevice, ItemsPerPage, page, out pagesTotal);
+
+            List<string> devices = new List<string> { All };
+            devices.AddRange(devicesForUser.Select(x => x.Name));
 
             FeedViewModel feedViewModel = new FeedViewModel
                                               {
-                                                  DeviceTypes = deviceTypes,
+                                                  Devices = devices,
                                                   Messages = messagesForUser,
-                                                  SelectedDeviceType = deviceType,
+                                                  SendingDevice = sendingDevice,
+                                                  ReceivingDevice = receivingDevice,
                                                   PaginationModel = new PaginationModel
                                                                         {
                                                                             CurrentPage = page,
                                                                             PagesTotal = pagesTotal
                                                                         }
                                               };
+
             return View(feedViewModel);
         }
     }

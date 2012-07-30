@@ -5,9 +5,16 @@ namespace CloudUri.SAL.Services
 {
     public interface IFeedsService
     {
-        List<Message> GetMessagesForUser(string username);
-        List<Message> GetMessagesForUser(string username, int itemsPerPage, int page, out int pagesTotal);
-        List<Message> GetMessagesForUser(string username, string deviceType);
-        List<Message> GetMessagesForUser(string username, string deviceType, int itemsPerPage, int page, out int pagesTotal);
+        /// <summary>
+        /// Get messages for user
+        /// </summary>
+        /// <param name="username">User name</param>
+        /// <param name="sendingDevice">Sending device name</param>
+        /// <param name="receivingDevice">Receiving device name</param>
+        /// <param name="itemsPerPage">Items per page</param>
+        /// <param name="page">Page</param>
+        /// <param name="pagesTotal">Total pages</param>
+        /// <returns>Messages for user</returns>
+        List<Message> GetMessagesForUser(string username, string sendingDevice, string receivingDevice, int itemsPerPage, int page, out int pagesTotal);
     }
 }

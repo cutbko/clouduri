@@ -19,11 +19,23 @@
         <div class="span3">
             <div class="well sidebar-nav">
                 <ul class="nav nav-list">
-                    <li class="nav-header">Device types</li>
-                    @foreach (var item in Model.DeviceTypes)
+                    <li class="nav-header">Sending devices</li>
+                    @foreach (var item in Model.Devices)
                     {
-                        <li @Html.LiActive(item, Model.SelectedDeviceType)>
-                            @Html.ActionLink(item, "Index", new { deviceType = item })
+                        <li @Html.LiActive(item, Model.SendingDevice)>
+                            @Html.ActionLink(item, "Index", new { sendingDevice = item, receivingDevice = Model.ReceivingDevice })
+                        </li>
+                    }
+                </ul>
+            </div>
+            
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Receiving devices</li>
+                    @foreach (var item in Model.Devices)
+                    {
+                        <li @Html.LiActive(item, Model.ReceivingDevice)>
+                            @Html.ActionLink(item, "Index", new { sendingDevice = Model.SendingDevice, receivingDevice = item })
                         </li>
                     }
                 </ul>
@@ -58,7 +70,7 @@
                 </div>
             }
 
-            @Html.BuildPagination(Model.PaginationModel, i => Url.Action("Index", new {deviceType = Model.SelectedDeviceType, page = i} ))
+            @Html.BuildPagination(Model.PaginationModel, i => Url.Action("Index", new {sendingDevice = Model.SendingDevice, receivingDevice = Model.ReceivingDevice, page = i} ))
         </div>
 
     </div>

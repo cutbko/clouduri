@@ -5,6 +5,11 @@ namespace CloudUri.SAL.Services
 {
     public interface IDevicesService
     {
-        List<DeviceType> GetDeviceTypesForUser(string name);
+        /// <summary>
+        /// Gets devices for user
+        /// </summary>
+        /// <param name="name">User name</param>
+        /// <returns>List of devices</returns>
+        List<Device> GetDevicesForUser(string name);
     }
 }

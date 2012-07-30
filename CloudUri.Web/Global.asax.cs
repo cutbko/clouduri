@@ -25,15 +25,7 @@ namespace CloudUri.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "FeedByDevice",
-                "Feed/{deviceType}",
-                new { controller = "Feed", action = "Index", deviceType = "All", page = 1 });
-
-            routes.MapRoute(
-                "FeedByDeviceWithPages",
-                "Feed/{deviceType}/Page{page}",
-                new {controller = "Feed", action = "Index", deviceType = "All", page = 1 });
+            FillRoutesForFeedsConroller(routes);
 
             routes.MapRoute(
                 "Default", // Route name
@@ -41,6 +33,49 @@ namespace CloudUri.Web
                 new { controller = "About", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+        }
+
+        private static void FillRoutesForFeedsConroller(RouteCollection routes)
+        {
+            routes.MapRoute(
+                "FeedDefault",
+                "Feed",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedPages",
+                "Feed/Page{page}",
+                new { controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1 });
+
+            routes.MapRoute(
+                "FeedBySendingDevice",
+                "Feed/From/{sendingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingDeviceWithPages",
+                "Feed/From/{sendingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedByReceivingDevice",
+                "Feed/To/{receivingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedByReceivingDeviceWithPages",
+                "Feed/To/{receivingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingAndReceivingDevice",
+                "Feed/From/{sendingDevice}/To/{receivingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingAndReceivingDeviceWithNumbers",
+                "Feed/From/{sendingDevice}/To/{receivingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
         }
 
         protected void Application_Start()

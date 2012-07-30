@@ -6,9 +6,11 @@ namespace CloudUri.Web.ViewModels
 {
     public class FeedViewModel
     {
-        public List<string> DeviceTypes { get; set; }
+        public List<string> Devices { get; set; }
 
-        public string SelectedDeviceType { get; set; }
+        public string SendingDevice { get; set; }
+
+        public string ReceivingDevice { get; set; }
 
         public List<Message> Messages { get; set; }
 

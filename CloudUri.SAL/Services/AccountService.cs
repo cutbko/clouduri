@@ -156,7 +156,7 @@ namespace CloudUri.SAL.Services
                     return null;
                 }
                 User createdUser = _dalContext.UsersRepository.CreateUser(user);
-                errorMessage = createdUser != null ? null : UserAlreadyExistsMessage;
+                errorMessage = null;
 
                 return createdUser;
             }
