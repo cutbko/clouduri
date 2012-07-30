@@ -70,7 +70,7 @@
                 </div>
             }
 
-            @Html.BuildPagination(Model.PaginationModel, i => Url.Action("Index", new {sendingDevice = Model.SendingDevice, receivingDevice = Model.ReceivingDevice, page = i} ))
+            @Html.BuildPaginationWithSkippingPages(Model.PaginationModel, i => Url.Action("Index", new {sendingDevice = Model.SendingDevice, receivingDevice = Model.ReceivingDevice, page = i} ))
         </div>
 
     </div>

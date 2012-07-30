@@ -79,19 +79,11 @@
 
         public const string MessagesForUserGetBySendingDevice = "Messages_ForUserBySendingDevice";
 
-        public const string MessagesGetNumberOfPagesForUserBySendingDevice = "Messages_PagesTotalForUserBySendingDevice";
-
         public const string MessagesForUserGetByReceivingDevice = "Messages_ForUserByReceivingDevice";
-
-        public const string MessagesGetNumberOfPagesForUserByReceivingDevice = "Messages_PagesTotalForUserByReceivingDevice";
 
         public const string MessagesForUserGetByDevices = "Messages_ForUserByDevices";
 
-        public const string MessagesGetNumberOfPagesForUserByDevices = "Messages_PagesTotalForUserByDevices";
-
         public const string MessagesForUser = "Messages_ForUser";
-
-        public const string MessagesGetNumberOfPagesForUser = "Messages_PagesTotalForUser";
 
         #endregion
 

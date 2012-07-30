@@ -380,7 +380,13 @@
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUser.proc.sql">
       <SubType>Code</SubType>
     </Build>
-    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_PagesTotalForUser.proc.sql">
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUserBySendingDevice.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUserByReceivingDevice.proc.sql">
+      <SubType>Code</SubType>
+    </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUserByDevices.proc.sql">
       <SubType>Code</SubType>
     </Build>
   </ItemGroup>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using CloudUri.Common.Extensions;
 using CloudUri.DAL.Database;
 using CloudUri.DAL.Entities;
@@ -135,10 +137,7 @@ namespace CloudUri.DAL.Repository
         /// <returns>Messages for user</returns>
         public List<Message> GetMessagesForUser(string username, string sendingDevice, string receivingDevice, int itemsPerPage, int page, out int pagesTotal)
         {
-            // TODO: Make DbWrapper.ExecuteReader return a list of output parameters
-
             List<Message> messages = new List<Message>();
-            pagesTotal = 0;
             DbParam userName = new DbParam
                 {
                     Name = "@UserName", Type = SqlDbType.NVarChar, Value = username
@@ -157,6 +156,13 @@ namespace CloudUri.DAL.Repository
                             Name = "@Page",
                             Type = SqlDbType.Int,
                             Value = page
+                        },
+                    new DbParam
+                        {
+                            Name = "@PagesTotal",
+                            Direction = ParameterDirection.Output,
+                            Type = SqlDbType.Int,
+                            Size = 4
                         }
                 };
 
@@ -165,7 +171,6 @@ namespace CloudUri.DAL.Repository
 
             if (string.IsNullOrWhiteSpace(sendingDevice) && string.IsNullOrWhiteSpace(receivingDevice))
             {
-                pagesTotal = DbWrapper.ExecuteSPScalar<int>(StoredProcedureNames.MessagesGetNumberOfPagesForUser, new List<DbParam> { userName, itemsPerPageParam });
                 storedProcedure = StoredProcedureNames.MessagesForUser;
             }
             else if (!string.IsNullOrWhiteSpace(sendingDevice) && string.IsNullOrWhiteSpace(receivingDevice))
@@ -207,7 +212,8 @@ namespace CloudUri.DAL.Repository
 
 
             IDbConnection connection;
-            IDataReader reader = DbWrapper.ExecuteSPReader(storedProcedure, parameters, out connection);
+            IList<SqlParameter> outputParams;
+            IDataReader reader = DbWrapper.ExecuteSPReader(storedProcedure, parameters, out connection, out outputParams);
 
             UtilizeConnectionAndReader(connection, reader, (c,r) =>
                 {
@@ -217,6 +223,7 @@ namespace CloudUri.DAL.Repository
                     }
                 });
 
+            pagesTotal = (int) outputParams.Single(x => x.ParameterName == "@PagesTotal").Value;
             
             return messages;
         }

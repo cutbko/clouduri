@@ -1,7 +1,8 @@
-﻿CREATE PROCEDURE [dbo].[Messages_ForUser]
+﻿CREATE PROCEDURE [dbo].[Messages_ForUserByReceivingDevice]
 	@UserName NVARCHAR(100), 
 	@ItemsPerPage INT,
 	@Page INT,
+	@ReceivingDevice NVARCHAR(200),
 	@PagesTotal INT OUTPUT
 AS
 	SELECT @PagesTotal =
@@ -11,9 +12,10 @@ AS
 			ELSE COUNT(M.[Id]) / @ItemsPerPage 
 		END)
 	FROM [dbo].[Messages] M
-	INNER JOIN Devices D ON D.Id = M.FromId 
+	INNER JOIN Devices D ON D.Id = M.FromId
+	INNER JOIN Devices DTo ON DTo.Id = M.ToId 
 	INNER JOIN Users U ON D.OwnerId = U.Id
-	WHERE U.Username = @UserName
+	WHERE U.Username = @UserName AND DTo.Name = @ReceivingDevice
 
 	DECLARE @Offset INT = 0
 	
@@ -27,9 +29,9 @@ AS
 		ROW_NUMBER() OVER (ORDER BY M.[Id]) rownum 
 		FROM [dbo].[Messages] M
 		INNER JOIN Devices D ON D.Id = M.FromId 
+		INNER JOIN Devices DTo ON DTo.Id = M.ToId 
 		INNER JOIN Users U ON D.OwnerId = U.Id
-		WHERE U.Username = @UserName
+		WHERE U.Username = @UserName AND DTo.Name = @ReceivingDevice
 	) SEQ
 	
 	WHERE rownum BETWEEN @ItemsPerPage * (@Page - 1) + @Offset AND @ItemsPerPage * @Page
-
