@@ -45,9 +45,9 @@ namespace CloudUri.DAL.Tests.Repository
         {
             List<DbParam> expectedParametersForInserting = new List<DbParam>
                        {
-                           new DbParam { Name = "@Name", Value = _device.Name },
-                           new DbParam { Name = "@TypeId", Value = _device.TypeId },
-                           new DbParam { Name = "@OwnerId", Value = _device.OwnerId }
+                           new DbParam { Name = "@Name", Value = _device.Name, Type = SqlDbType.NVarChar},
+                           new DbParam { Name = "@TypeId", Value = _device.TypeId, Type = SqlDbType.Int},
+                           new DbParam { Name = "@OwnerId", Value = _device.OwnerId, Type = SqlDbType.Int}
                        };
 
 
@@ -65,10 +65,10 @@ namespace CloudUri.DAL.Tests.Repository
         {
             List<DbParam> expectedParametersForUpdating = new List<DbParam>
                        {
-                           new DbParam { Name = "@Id", Value = _device.Key },
-                           new DbParam { Name = "@Name", Value = _device.Name },
-                           new DbParam { Name = "@TypeId", Value = _device.TypeId },
-                           new DbParam { Name = "@OwnerId", Value = _device.OwnerId }
+                           new DbParam { Name = "@Id", Value = _device.Key, Type = SqlDbType.Int},
+                           new DbParam { Name = "@Name", Value = _device.Name, Type = SqlDbType.NVarChar },
+                           new DbParam { Name = "@TypeId", Value = _device.TypeId, Type = SqlDbType.Int },
+                           new DbParam { Name = "@OwnerId", Value = _device.OwnerId, Type = SqlDbType.Int }
                        };
 
 

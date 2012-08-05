@@ -12,7 +12,7 @@ namespace CloudUri.DAL.Helpers
     {
         static PasswordHelper()
         {
-            PasswordEncoding = Encoding.ASCII;
+            PasswordEncoding = Encoding.Default;
         }
 
         /// <summary>
@@ -52,16 +52,15 @@ namespace CloudUri.DAL.Helpers
         /// <returns>Returns true if salted hash is the same as the entered password</returns>
         public static bool ComparePasswordAndHash(string hash, string password, string salt)
         {
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentNullException("password");
+
             #if DEBUG
             if(string.CompareOrdinal(hash, password) == 0)
             {
                 return true;
             }
             #endif
-
-
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentNullException("password");
 
             byte[] passBytes = PasswordEncoding.GetBytes(password);
             byte[] hashedPassword = GenerateSaltedHash(passBytes, PasswordEncoding.GetBytes(salt));
@@ -89,16 +88,16 @@ namespace CloudUri.DAL.Helpers
             if (size <= 0)
                 throw new ArgumentOutOfRangeException("size", size, "Size must be positive");
 
-            Random r = new Random();
-            return Enumerable.Range(1, size).Select(x => (byte) r.Next()).ToArray();
+            //Random r = new Random();
+            //return Enumerable.Range(1, size).Select(x => (byte) r.Next()).ToArray();
 
-            //using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            //{
-            //    var buff = new byte[size];
-            //    rng.GetBytes(buff);
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                var buff = new byte[size];
+                rng.GetBytes(buff);
 
-            //    return buff;
-            //}
+                return buff;
+            }
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using CloudUri.DAL.Database;
@@ -23,7 +24,8 @@ namespace CloudUri.DAL.Tests.Repository
             Key = int.MaxValue,
             MessageText = "Hello!!!",
             FromId = 100,
-            ToId = 200
+            ToId = 200,
+            CreatedOn = DateTime.Now
         };
 
         private IDbWrapper _dbWrapper;
@@ -88,6 +90,7 @@ namespace CloudUri.DAL.Tests.Repository
             _dataReader.Expect(x => x.IsDBNull(3)).Repeat.Once().Return(true);
             _dataReader.Expect(x => x.GetInt32(0)).Return(_message.Key).Repeat.Once();
             _dataReader.Expect(x => x.GetInt32(2)).Return(_message.FromId).Repeat.Once();
+            _dataReader.Expect(x => x.GetDateTime(4)).Return(_message.CreatedOn).Repeat.Once();
 
             _mockRepository.ReplayAll();
 
@@ -114,6 +117,7 @@ namespace CloudUri.DAL.Tests.Repository
             _dataReader.Expect(x => x.GetString(1)).Return(_message.MessageText).Repeat.Once();
             _dataReader.Expect(x => x.GetInt32(2)).Return(_message.FromId).Repeat.Once();
             _dataReader.Expect(x => x.GetInt32(3)).Return((int)_message.ToId).Repeat.Once();
+            _dataReader.Expect(x => x.GetDateTime(4)).Return(_message.CreatedOn).Repeat.Once();
 
             _mockRepository.ReplayAll();
 

@@ -38,8 +38,8 @@ namespace CloudUri.DAL.Repository
             return new List<DbParam>
                        {
                            new DbParam {Name = "@Name", Value = entity.Name, Type = SqlDbType.NVarChar},
-                           new DbParam {Name = "@TypeId", Value = entity.TypeId, Type = SqlDbType.BigInt},
-                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId, Type = SqlDbType.BigInt}
+                           new DbParam {Name = "@TypeId", Value = entity.TypeId, Type = SqlDbType.Int},
+                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId, Type = SqlDbType.Int}
                        };
         }
 
@@ -68,10 +68,10 @@ namespace CloudUri.DAL.Repository
         {
             return new List<DbParam>
                        {
-                           new DbParam {Name = "@Id", Value = entity.Key,Type = SqlDbType.BigInt},
+                           new DbParam {Name = "@Id", Value = entity.Key,Type = SqlDbType.Int},
                            new DbParam {Name = "@Name", Value = entity.Name,Type = SqlDbType.NVarChar},
-                           new DbParam {Name = "@TypeId", Value = entity.TypeId,Type = SqlDbType.BigInt},
-                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId,Type = SqlDbType.BigInt}
+                           new DbParam {Name = "@TypeId", Value = entity.TypeId,Type = SqlDbType.Int},
+                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId,Type = SqlDbType.Int}
                        };
         }
 
