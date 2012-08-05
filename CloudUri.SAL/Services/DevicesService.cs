@@ -20,6 +20,36 @@ namespace CloudUri.SAL.Services
             _dalContext = dalContext;
         }
 
+        public List<Device> GetDevicesByUsername(string userName)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Device GetDeviceById(int key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateDevice(Device device)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int InsertDevice(Device device)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool DeleteDevice(int key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<DeviceType> GetDeviceTypes()
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Gets devices for user
         /// </summary>
