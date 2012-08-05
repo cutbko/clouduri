@@ -1,8 +1,78 @@
-﻿@model dynamic
+﻿@using System.Globalization
+@using CloudUri.Web.HtmlHelpers
+@model CloudUri.Web.ViewModels.FeedViewModel
 
 @{
     ViewBag.Title = "Your feed";
     Layout = "../Shared/_Layout.cshtml";
 }
 
-<h2>Your feed goes here</h2>
+<div class="container-fluid">
+    
+    <div class="row-fluid">
+            <div class="span12 hero-unit" style="padding: 20px; margin-bottom: 16px;">
+            <h1 style="font-size: 32px; text-align: center">Your feed goes here</h1>    
+        </div>
+    </div>
+
+    <div class="row-fluid">
+        <div class="span3">
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Sending devices</li>
+                    @foreach (var item in Model.Devices)
+                    {
+                        <li @Html.LiActive(item, Model.SendingDevice)>
+                            @Html.ActionLink(item, "Index", new { sendingDevice = item, receivingDevice = Model.ReceivingDevice })
+                        </li>
+                    }
+                </ul>
+            </div>
+            
+            <div class="well sidebar-nav">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Receiving devices</li>
+                    @foreach (var item in Model.Devices)
+                    {
+                        <li @Html.LiActive(item, Model.ReceivingDevice)>
+                            @Html.ActionLink(item, "Index", new { sendingDevice = Model.SendingDevice, receivingDevice = item })
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="span9">
+            @foreach (var item in Model.Messages)
+            {
+                <div class="message-container well">
+                    <div class="message-header">
+                        <div class="message-time">
+                            Sending time: @item.CreatedOn.ToString(CultureInfo.InvariantCulture)
+                        </div>
+                        <div class="message-from">
+                            FROM: @item.SenderDevice.Name
+                        </div>
+                        <div class="message-to">
+                            TO:
+                            @if(item.RecieverDevice != null)
+                            {
+                                @item.RecieverDevice.Name
+                            }
+                            else
+                            {
+                                @:ALL
+                            }
+                        </div>
+                    </div>
+                    <div class="message-body">
+                        @item.MessageText         
+                    </div>
+                </div>
+            }
+
+            @Html.BuildPaginationWithSkippingPages(Model.PaginationModel, i => Url.Action("Index", new {sendingDevice = Model.SendingDevice, receivingDevice = Model.ReceivingDevice, page = i} ))
+        </div>
+
+    </div>
+    
+</div>

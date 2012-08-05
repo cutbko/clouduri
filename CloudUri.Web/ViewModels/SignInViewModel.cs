@@ -14,8 +14,6 @@ namespace CloudUri.Web.ViewModels
         public string UserName { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, enter your password")]
-        [MinLength(6, ErrorMessage = "Your password must be at least 6 symbols")]
-        [MaxLength(30, ErrorMessage = "30 symbols is not enough to you?")]
         [Display(Name = "Password")]
         public string Password { get; set; }
 

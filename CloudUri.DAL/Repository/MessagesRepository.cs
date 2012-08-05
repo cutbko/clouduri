@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
 using CloudUri.Common.Extensions;
 using CloudUri.DAL.Database;
 using CloudUri.DAL.Entities;
@@ -94,13 +97,15 @@ namespace CloudUri.DAL.Repository
             string messageText = dataReader.GetNullableString(1);
             int fromId = dataReader.GetInt32(2);
             int? toId = dataReader.GetNullableInt(3);
+            DateTime createdOn = dataReader.GetDateTime(4);
 
             return new Message
                        {
                            Key = key,
                            MessageText = messageText,
                            FromId = fromId,
-                           ToId = toId
+                           ToId = toId,
+                           CreatedOn = createdOn
                        };
         }
 
@@ -118,6 +123,109 @@ namespace CloudUri.DAL.Repository
         protected internal override string SPForCount
         {
             get { return StoredProcedureNames.MessageCount; }
+        }
+
+        /// <summary>
+        /// Get messages for user
+        /// </summary>
+        /// <param name="username">User name</param>
+        /// <param name="sendingDevice">Sending device name. If null you will get all the messages.</param>
+        /// <param name="receivingDevice">Receiving device name. If null you will get all the messages.</param>
+        /// <param name="itemsPerPage">Items per page</param>
+        /// <param name="page">Page</param>
+        /// <param name="pagesTotal">Total pages</param>
+        /// <returns>Messages for user</returns>
+        public List<Message> GetMessagesForUser(string username, string sendingDevice, string receivingDevice, int itemsPerPage, int page, out int pagesTotal)
+        {
+            List<Message> messages = new List<Message>();
+            DbParam userName = new DbParam
+                {
+                    Name = "@UserName", Type = SqlDbType.NVarChar, Value = username
+                };
+            DbParam itemsPerPageParam = new DbParam
+                {
+                    Name = "@ItemsPerPage", Type = SqlDbType.Int, Value = itemsPerPage
+                };
+
+            List<DbParam> parameters = new List<DbParam>
+                {
+                    userName,
+                    itemsPerPageParam,
+                    new DbParam
+                        {
+                            Name = "@Page",
+                            Type = SqlDbType.Int,
+                            Value = page
+                        },
+                    new DbParam
+                        {
+                            Name = "@PagesTotal",
+                            Direction = ParameterDirection.Output,
+                            Type = SqlDbType.Int,
+                            Size = 4
+                        }
+                };
+
+            string storedProcedure;
+
+
+            if (string.IsNullOrWhiteSpace(sendingDevice) && string.IsNullOrWhiteSpace(receivingDevice))
+            {
+                storedProcedure = StoredProcedureNames.MessagesForUser;
+            }
+            else if (!string.IsNullOrWhiteSpace(sendingDevice) && string.IsNullOrWhiteSpace(receivingDevice))
+            {
+                storedProcedure = StoredProcedureNames.MessagesForUserGetBySendingDevice;
+                parameters.Add(new DbParam
+                    {
+                        Name = "@SendingDevice",
+                        Type = SqlDbType.NVarChar,
+                        Value = sendingDevice
+                    });
+            }
+            else if (string.IsNullOrWhiteSpace(sendingDevice) && !string.IsNullOrWhiteSpace(receivingDevice))
+            {
+                storedProcedure = StoredProcedureNames.MessagesForUserGetByReceivingDevice;
+                parameters.Add(new DbParam
+                {
+                    Name = "@ReceivingDevice",
+                    Type = SqlDbType.NVarChar,
+                    Value = receivingDevice
+                });
+            }
+            else
+            {
+                storedProcedure = StoredProcedureNames.MessagesForUserGetByDevices;
+                parameters.Add(new DbParam
+                {
+                    Name = "@SendingDevice",
+                    Type = SqlDbType.NVarChar,
+                    Value = sendingDevice
+                });
+                parameters.Add(new DbParam
+                {
+                    Name = "@ReceivingDevice",
+                    Type = SqlDbType.NVarChar,
+                    Value = receivingDevice
+                });
+            }
+
+
+            IDbConnection connection;
+            IList<SqlParameter> outputParams;
+            IDataReader reader = DbWrapper.ExecuteSPReader(storedProcedure, parameters, out connection, out outputParams);
+
+            UtilizeConnectionAndReader(connection, reader, (c,r) =>
+                {
+                    while (r.Read())
+                    {
+                        messages.Add(ReadSingleEntity(r));
+                    }
+                });
+
+            pagesTotal = (int) outputParams.Single(x => x.ParameterName == "@PagesTotal").Value;
+            
+            return messages;
         }
     }
 }

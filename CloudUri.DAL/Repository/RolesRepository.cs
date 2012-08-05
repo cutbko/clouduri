@@ -110,5 +110,28 @@ namespace CloudUri.DAL.Repository
         {
             get { return StoredProcedureNames.RoleCount; }
         }
+
+        /// <summary>
+        /// Get roles for user
+        /// </summary>
+        /// <param name="name">User name</param>
+        /// <returns>List of roles</returns>
+        public List<Role> GetRolesForUser(string name)
+        {
+            List<Role> result = new List<Role>();
+
+            IDbConnection connection;
+            IDataReader reader = DbWrapper.ExecuteSPReader(StoredProcedureNames.RolesGetForUser, new List<DbParam> {new DbParam {Name = "@UserName", Value = name, Type = SqlDbType.NVarChar}}, out connection);
+            
+            UtilizeConnectionAndReader(connection, reader, (c,r)=>
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(ReadSingleEntity(reader));
+                    }
+                });
+
+            return result;
+        }
     }
 }

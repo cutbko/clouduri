@@ -19,6 +19,14 @@
 
         public const string UserCount = "Users_Count";
 
+        public const string AddRoleToUser = "User_AddRole";
+
+        public const string UserNameExists = "User_NameExists";
+
+        public const string UserEmailExists = "User_EmailExists";
+
+        public const string UserGetByName = "Users_GetByName";
+
         #endregion
 
         #region Device types
@@ -50,6 +58,8 @@
         public const string DeviceGetById = "Devices_GetById";
 
         public const string DeviceCount = "Devices_Count";
+        
+        public const string DeviceGetForUser = "Devices_GetForUser";
 
         #endregion
 
@@ -67,6 +77,14 @@
 
         public const string MessageCount = "Messages_Count";
 
+        public const string MessagesForUserGetBySendingDevice = "Messages_ForUserBySendingDevice";
+
+        public const string MessagesForUserGetByReceivingDevice = "Messages_ForUserByReceivingDevice";
+
+        public const string MessagesForUserGetByDevices = "Messages_ForUserByDevices";
+
+        public const string MessagesForUser = "Messages_ForUser";
+
         #endregion
 
         #region Role
@@ -83,6 +101,10 @@
 
         public const string RoleCount = "Roles_Count";
 
+        public const string RolesGetForUser = "Roles_GetForUser";
+
         #endregion
+
+        
     }
 }

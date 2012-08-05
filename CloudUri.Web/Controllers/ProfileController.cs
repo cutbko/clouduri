@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -14,7 +12,7 @@ namespace CloudUri.Web.Controllers
     /// <summary>
     /// Account controller
     /// </summary>
-    public class ProfileController : Controller
+    public class ProfileController : SecureController
     {
         private readonly IAccountService _accountService;
 
@@ -30,7 +28,14 @@ namespace CloudUri.Web.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(_accountService.GetUserByName(User.Identity.Name));
+            string errorMessage;
+            User user = _accountService.GetUserByName(User.Identity.Name, out errorMessage);
+            if (user == null)
+            {
+                ViewBag.ErrorMessage = errorMessage;
+            }
+
+            return View(user);
         }
 
         //
@@ -47,7 +52,8 @@ namespace CloudUri.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = _accountService.ValidateUser(logInViewModel.UserName, logInViewModel.Password);
+                string errorMessage;
+                User user = _accountService.ValidateUser(logInViewModel.UserName, logInViewModel.Password, out errorMessage);
                 if (user != null)
                 {
                     SimpleSessionPersister.Username = user.Username;
@@ -62,7 +68,7 @@ namespace CloudUri.Web.Controllers
 
                     return RedirectToAction("Index", "Feed");
                 }
-                ModelState.AddModelError(string.Empty, "User name or password are incorrect");
+                ModelState.AddModelError(string.Empty, errorMessage);
             }
 
             return View();

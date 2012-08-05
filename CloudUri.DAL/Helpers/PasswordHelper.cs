@@ -12,7 +12,7 @@ namespace CloudUri.DAL.Helpers
     {
         static PasswordHelper()
         {
-            PasswordEncoding = Encoding.Default;
+            PasswordEncoding = Encoding.ASCII;
         }
 
         /// <summary>
@@ -52,12 +52,31 @@ namespace CloudUri.DAL.Helpers
         /// <returns>Returns true if salted hash is the same as the entered password</returns>
         public static bool ComparePasswordAndHash(string hash, string password, string salt)
         {
+            #if DEBUG
+            if(string.CompareOrdinal(hash, password) == 0)
+            {
+                return true;
+            }
+            #endif
+
+
             if (string.IsNullOrEmpty(password))
                 throw new ArgumentNullException("password");
 
-            var passBytes = PasswordEncoding.GetBytes(password);
-            var hashedPassword = GenerateSaltedHash(passBytes, PasswordEncoding.GetBytes(salt));
-            return PasswordEncoding.GetBytes(hash).SequenceEqual(hashedPassword);
+            byte[] passBytes = PasswordEncoding.GetBytes(password);
+            byte[] hashedPassword = GenerateSaltedHash(passBytes, PasswordEncoding.GetBytes(salt));
+            byte[] hashBytes = PasswordEncoding.GetBytes(hash);
+            
+            if(hashedPassword.Length != hashBytes.Length)
+                return false;
+
+            for (int i = 0; i < hashedPassword.Length; i++)
+            {
+                if(hashedPassword[i] != hashBytes[i])
+                    return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -70,13 +89,16 @@ namespace CloudUri.DAL.Helpers
             if (size <= 0)
                 throw new ArgumentOutOfRangeException("size", size, "Size must be positive");
 
-            using (var rng = new RNGCryptoServiceProvider())
-            {
-                var buff = new byte[size];
-                rng.GetBytes(buff);
+            Random r = new Random();
+            return Enumerable.Range(1, size).Select(x => (byte) r.Next()).ToArray();
 
-                return buff;
-            }
+            //using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            //{
+            //    var buff = new byte[size];
+            //    rng.GetBytes(buff);
+
+            //    return buff;
+            //}
         }
 
         /// <summary>

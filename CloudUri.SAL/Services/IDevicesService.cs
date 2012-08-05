@@ -11,5 +11,11 @@ namespace CloudUri.SAL.Services
         int InsertDevice(Device device);
         bool DeleteDevice(int key);
         List<DeviceType> GetDeviceTypes();
+        /// <summary>
+        /// Gets devices for user
+        /// </summary>
+        /// <param name="name">User name</param>
+        /// <returns>List of devices</returns>
+        List<Device> GetDevicesForUser(string name);
     }
 }

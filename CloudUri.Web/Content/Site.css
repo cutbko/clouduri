@@ -38,8 +38,32 @@ footer{
 	background-color:#DEDEDE;
 }
 
+/* Navigation bar style
+-----------------------------------------------------------*/
+.sidebar-nav {
+    padding: 9px 0;
+}
+
+
 /* Styles for basic forms
 -----------------------------------------------------------*/
+
+.centeredContainer 
+{
+    padding: 30px 0px 30px 50px;
+    min-width: 300px;
+    background-color: rgb(242,242,242);
+   
+    position:absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -150px;
+    margin-top: -150px;
+    -moz-border-radius: 10px; 
+    -webkit-border-radius: 10px; 
+    border-radius: 10px;
+    border: 1px #05C solid;
+}
 
 fieldset 
 {
@@ -75,6 +99,7 @@ textarea
 .field-validation-error
 {
     color: #ff0000;
+    margin: 6px;
 }
 
 .field-validation-valid
@@ -92,9 +117,39 @@ textarea
 {
     font-weight: bold;
     color: #ff0000;
+    margin: 6px 6px 6px -12px;
 }
 
 .validation-summary-valid
 {
     display: none;
 }
+
+/*Message
+-----------------------------------------*/
+.message-header div {
+    margin: 6px;    
+}
+.message-header {
+    float: none;
+    display: inline
+}
+.message-time {
+    float: left;
+}
+
+.message-from {
+    float: left;
+}
+
+.message-body {
+    margin: 6px;
+}
+
+.message-container {
+    
+}
+
+ .message-to {
+     
+ }

@@ -119,5 +119,22 @@ namespace CloudUri.DAL.Repository
         {
             get { return StoredProcedureNames.DeviceCount; }
         }
+
+        public List<Device> GetDevicesForUser(string userName)
+        {
+            List<Device> devices = new List<Device>();
+            IDbConnection connection;
+            IDataReader dataReader = DbWrapper.ExecuteSPReader(StoredProcedureNames.DeviceGetForUser, new List<DbParam> { new DbParam { Name = "@UserName", Type = SqlDbType.NVarChar, Value = userName } }, out connection);
+
+            UtilizeConnectionAndReader(connection, dataReader, (c,d)=>
+                {
+                    while (dataReader.Read())
+                    {
+                        devices.Add(ReadSingleEntity(dataReader));
+                    }
+                });
+
+            return devices;
+        }
     }
 }

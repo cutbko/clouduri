@@ -25,6 +25,8 @@ namespace CloudUri.Web
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            FillRoutesForFeedsConroller(routes);
+
             //routes.MapRoute(
             //    "DevicesEdit",
             //    "Devices/Edit/{id}",
@@ -36,6 +38,49 @@ namespace CloudUri.Web
                 new { controller = "About", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+        }
+
+        private static void FillRoutesForFeedsConroller(RouteCollection routes)
+        {
+            routes.MapRoute(
+                "FeedDefault",
+                "Feed",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedPages",
+                "Feed/Page{page}",
+                new { controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1 });
+
+            routes.MapRoute(
+                "FeedBySendingDevice",
+                "Feed/From/{sendingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingDeviceWithPages",
+                "Feed/From/{sendingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedByReceivingDevice",
+                "Feed/To/{receivingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedByReceivingDeviceWithPages",
+                "Feed/To/{receivingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingAndReceivingDevice",
+                "Feed/From/{sendingDevice}/To/{receivingDevice}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
+
+            routes.MapRoute(
+                "FeedBySendingAndReceivingDeviceWithNumbers",
+                "Feed/From/{sendingDevice}/To/{receivingDevice}/Page{page}",
+                new {controller = "Feed", action = "Index", sendingDevice = "All", receivingDevice = "All", page = 1});
         }
 
         protected void Application_Start()
@@ -64,7 +109,12 @@ namespace CloudUri.Web
                 FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
 
                 SimpleSessionPersister.Username = authTicket.Name;
-                SimpleSessionPersister.Roles = DependencyResolver.Current.GetService<IAccountService>().GetRolesForUser(authTicket.Name);
+                string errorMessage;
+                SimpleSessionPersister.Roles = DependencyResolver.Current.GetService<IAccountService>().GetRolesForUser(authTicket.Name, out errorMessage);
+                if (errorMessage != null)
+                {
+                    Logger.Log.Error(errorMessage);
+                }
             }
         }
     }

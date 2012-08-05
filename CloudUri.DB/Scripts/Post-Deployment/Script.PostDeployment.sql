@@ -9,3 +9,8 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
+INSERT INTO Roles (Name, [Description]) VALUES ('users', 'A simle role for all registered users on the site')
+INSERT INTO Roles (Name, [Description]) VALUES ('administrators', 'A role for site administrators')
+
+EXEC [Test].FillUserCutbko

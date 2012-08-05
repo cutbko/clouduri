@@ -3,7 +3,6 @@ using CloudUri.DAL;
 using CloudUri.DAL.Database;
 using CloudUri.DAL.Repository;
 using CloudUri.SAL.Services;
-using CloudUri.SAL.Services.Stubs;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
 
@@ -25,12 +24,12 @@ namespace CloudUri.Web
         private static IUnityContainer BuildUnityContainer()
         {
             var container = new UnityContainer();
-            
 
             container.RegisterType<IDbWrapper, SqlDbWrapper>();
             container.RegisterType<IDALContext, SqlDALContext>();
-            container.RegisterType<IAccountService, AccountServiceStub>(new ContainerControlledLifetimeManager());
-            container.RegisterType<IDevicesService, DevicesServiceStub>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IAccountService, AccountService>();
+            container.RegisterType<IDevicesService, DevicesService>();
+            container.RegisterType<IFeedsService, FeedsService>();
 
             return container;
         }

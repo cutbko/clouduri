@@ -12,7 +12,7 @@ namespace CloudUri.Web.ViewModels
         public string UserName { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please, enter your Email")]
-        [Display(Name = "User name")]
+        [Display(Name = "User email")]
         [Email(ErrorMessage = "Email is in incorrect format")]
         public string Email { get; set; }
 
