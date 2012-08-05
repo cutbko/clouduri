@@ -37,9 +37,9 @@ namespace CloudUri.DAL.Repository
         {
             return new List<DbParam>
                        {
-                           new DbParam {Name = "@Name", Value = entity.Name},
-                           new DbParam {Name = "@TypeId", Value = entity.TypeId},
-                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId}
+                           new DbParam {Name = "@Name", Value = entity.Name, Type = SqlDbType.NVarChar},
+                           new DbParam {Name = "@TypeId", Value = entity.TypeId, Type = SqlDbType.BigInt},
+                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId, Type = SqlDbType.BigInt}
                        };
         }
 
@@ -48,7 +48,7 @@ namespace CloudUri.DAL.Repository
         /// </summary>
         protected internal override string SPForDeleting
         {
-            get { return StoredProcedureNames.DeviceInsert; }
+            get { return StoredProcedureNames.DeviceDelete; }
         }
 
         /// <summary>
@@ -68,10 +68,10 @@ namespace CloudUri.DAL.Repository
         {
             return new List<DbParam>
                        {
-                           new DbParam {Name = "@Id", Value = entity.Key},
-                           new DbParam {Name = "@Name", Value = entity.Name},
-                           new DbParam {Name = "@TypeId", Value = entity.TypeId},
-                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId}
+                           new DbParam {Name = "@Id", Value = entity.Key,Type = SqlDbType.BigInt},
+                           new DbParam {Name = "@Name", Value = entity.Name,Type = SqlDbType.NVarChar},
+                           new DbParam {Name = "@TypeId", Value = entity.TypeId,Type = SqlDbType.BigInt},
+                           new DbParam {Name = "@OwnerId", Value = entity.OwnerId,Type = SqlDbType.BigInt}
                        };
         }
 

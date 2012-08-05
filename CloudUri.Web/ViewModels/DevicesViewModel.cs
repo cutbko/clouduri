@@ -11,7 +11,7 @@ namespace CloudUri.Web.ViewModels
             
         }
 
-        public DevicesViewModel(Device currentDevice, List<DeviceType> types)
+        public DevicesViewModel(Device currentDevice, IEnumerable<DeviceType> types)
         {
             CurrentDevice = currentDevice;
             DeviceTypes = new SelectList(types, "Key", "Name", currentDevice.TypeId);

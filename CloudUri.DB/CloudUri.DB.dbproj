@@ -389,5 +389,8 @@
     <Build Include="Schema Objects\Schemas\dbo\Programmability\Stored Procedures\MessagesRepository\Messages_ForUserByDevices.proc.sql">
       <SubType>Code</SubType>
     </Build>
+    <Build Include="Schema Objects\Schemas\dbo\Tables\Constraints\DF_Devices_Deleted.defconst.sql">
+      <SubType>Code</SubType>
+    </Build>
   </ItemGroup>
 </Project>

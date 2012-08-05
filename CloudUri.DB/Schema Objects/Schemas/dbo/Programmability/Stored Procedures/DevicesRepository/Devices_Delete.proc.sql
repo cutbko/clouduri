@@ -1,4 +1,7 @@
-﻿CREATE PROCEDURE [dbo].[Devices_Delete]
-	@Key int
+﻿
+CREATE PROCEDURE [dbo].[Devices_Delete]
+	@Id int
 AS
-	DELETE FROM [Devices] WHERE [Devices].[Id] = @Key 
+	UPDATE [dbo].[Devices] SET
+	[Deleted] = 1
+	WHERE [Id] = @Id 

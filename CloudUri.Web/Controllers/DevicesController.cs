@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
 using CloudUri.DAL.Entities;
 using CloudUri.SAL.Services;
@@ -25,38 +22,61 @@ namespace CloudUri.Web.Controllers
         public ActionResult Index()
         {
             var name = User.Identity.Name;
-            List<Device> devices = _deviceService.GetDevicesByUsername(name);
+
+            string error;
+            List<Device> devices = _deviceService.GetDevicesForUser(name,out error);
+            ViewBag.Result = error;
             return View(devices);
         }
 
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            Device dev = _deviceService.GetDeviceById(id);
-            var devicesViewModel = new DevicesViewModel(dev, _deviceService.GetDeviceTypes());
+            var errors = new List<string>();
+            string error;
+
+            Device dev = _deviceService.GetDeviceById(id,out error);
+            if(!string.IsNullOrEmpty(error))
+                errors.Add(error);
+
+            var devicesViewModel = new DevicesViewModel(dev, _deviceService.GetDeviceTypes(out error));
+            if (!string.IsNullOrEmpty(error))
+                errors.Add(error);
+
             return View(devicesViewModel);
         }
 
         [HttpPost]
         public ActionResult Edit(DevicesViewModel deviceViewModel)
         {
-            bool result = _deviceService.UpdateDevice(deviceViewModel.CurrentDevice);
+            string error;
+            _deviceService.UpdateDevice(deviceViewModel.CurrentDevice,out error);
 
-            if (result)
+            if (string.IsNullOrEmpty(error))
             {
                 ViewBag.Result = "Success";
                 return RedirectToAction("Index");
             }
-            ViewBag.Result = "Fail";
+            ViewBag.Result = error;
             return View(deviceViewModel);
         }
 
         public ActionResult Delete(int id)
         {
-            bool result = _deviceService.DeleteDevice(id);
-            ViewBag.Result = result 
+            var errors = new List<string>();
+            string error;
+
+            Device device = _deviceService.GetDeviceById(id,out error);
+            if(!string.IsNullOrEmpty(error))
+                errors.Add(error);
+
+            _deviceService.DeleteDevice(device,out error);
+            if (!string.IsNullOrEmpty(error))
+                errors.Add(error);
+
+            ViewBag.Result = errors.Count == 0 
                 ? "Success" 
-                : "Fail";
+                : errors.ToString();
             return RedirectToAction("Index");
         }
     }

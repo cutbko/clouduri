@@ -32,7 +32,8 @@ namespace CloudUri.Web.Controllers
         // GET: /Feed/
         public ViewResult Index(string sendingDevice, string receivingDevice, int page = 1)
         {
-            List<Device> devicesForUser = _devicesService.GetDevicesForUser(User.Identity.Name);
+            string error;
+            List<Device> devicesForUser = _devicesService.GetDevicesForUser(User.Identity.Name,out error);
             int pagesTotal;
 
             List<Message> messagesForUser =  _feedsService.GetMessagesForUser(User.Identity.Name, sendingDevice == All ? null : sendingDevice, receivingDevice == All ? null : receivingDevice, ItemsPerPage, page, out pagesTotal);

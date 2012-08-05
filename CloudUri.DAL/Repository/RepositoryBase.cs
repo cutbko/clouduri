@@ -240,7 +240,7 @@ namespace CloudUri.DAL.Repository
         {
             return new List<DbParam>
                        {
-                           new DbParam {Name = "@Id", Value = entity.Key}
+                           new DbParam {Name = "@Id", Value = entity.Key,Type = SqlDbType.BigInt}
                        };
         }
 
