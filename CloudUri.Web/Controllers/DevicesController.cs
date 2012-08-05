@@ -33,11 +33,7 @@ namespace CloudUri.Web.Controllers
         public ActionResult Edit(int id)
         {
             Device dev = _deviceService.GetDeviceById(id);
-            DevicesViewModel devicesViewModel = new DevicesViewModel
-                                                    {
-                                                        CurrentDevice = dev,
-                                                        DeviceTypes = _deviceService.GetDeviceTypes()
-                                                    };
+            var devicesViewModel = new DevicesViewModel(dev, _deviceService.GetDeviceTypes());
             return View(devicesViewModel);
         }
 

@@ -28,7 +28,8 @@
             @Html.LabelFor(model => model.CurrentDevice.TypeId)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.CurrentDevice.TypeId)
+            @Html.DropDownListFor(model => model.CurrentDevice.TypeId, Model.DeviceTypes)
+           @* @Html.EditorFor(model => model.CurrentDevice.TypeId)*@
             @Html.ValidationMessageFor(model => model.CurrentDevice.TypeId)
         </div>
 

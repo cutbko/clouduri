@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using CloudUri.DAL.Entities;
@@ -38,7 +37,7 @@ namespace CloudUri.SAL.Services.Stubs
                                        Key = 1,
                                        Name = "Dev1",
                                        OwnerId = 1,
-                                       TypeId = 1,
+                                       TypeId = _deviceTypes[0].Key,
                                        Type = _deviceTypes[0]
                                    },
                                new Device
@@ -46,7 +45,7 @@ namespace CloudUri.SAL.Services.Stubs
                                        Key = 2,
                                        Name = "Dev2",
                                        OwnerId = 1,
-                                       TypeId = 1,
+                                       TypeId = _deviceTypes[1].Key,
                                        Type = _deviceTypes[1]
                                    },
                                new Device
@@ -54,7 +53,7 @@ namespace CloudUri.SAL.Services.Stubs
                                        Key = 3,
                                        Name = "Dev3",
                                        OwnerId = 1,
-                                       TypeId = 1,
+                                       TypeId = _deviceTypes[2].Key,
                                        Type = _deviceTypes[2]
                                    }
                            };
@@ -80,6 +79,7 @@ namespace CloudUri.SAL.Services.Stubs
                 return false;
             dev.Name = device.Name;
             dev.TypeId = device.TypeId;
+            dev.Type = _deviceTypes.First(i => i.Key == device.TypeId);
             return true;
         }
 

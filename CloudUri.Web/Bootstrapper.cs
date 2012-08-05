@@ -19,16 +19,18 @@ namespace CloudUri.Web
             IUnityContainer container = BuildUnityContainer();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
+
         }
 
         private static IUnityContainer BuildUnityContainer()
         {
             var container = new UnityContainer();
+            
 
             container.RegisterType<IDbWrapper, SqlDbWrapper>();
             container.RegisterType<IDALContext, SqlDALContext>();
-            container.RegisterType<IAccountService, AccountServiceStub>();
-            container.RegisterType<IDevicesService, DevicesServiceStub>();
+            container.RegisterType<IAccountService, AccountServiceStub>(new ContainerControlledLifetimeManager());
+            container.RegisterType<IDevicesService, DevicesServiceStub>(new ContainerControlledLifetimeManager());
 
             return container;
         }
