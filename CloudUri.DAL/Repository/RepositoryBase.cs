@@ -121,7 +121,7 @@ namespace CloudUri.DAL.Repository
         /// Returns all the items from repository
         /// </summary>
         /// <returns>A list of items</returns>
-        public IEnumerable<TEntity> GetRecords()
+        public IList<TEntity> GetRecords()
         {
             Logger.Log.InfoFormat("Getting N records from db");
 

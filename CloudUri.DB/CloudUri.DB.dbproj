@@ -41,8 +41,7 @@
     <OutputPath>.\sql\debug\</OutputPath>
     <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
     <TargetConnectionString>Data Source=.;Integrated Security=True;Pooling=False</TargetConnectionString>
-    <TargetDatabase>
-    </TargetDatabase>
+    <TargetDatabase>CloudUri.DB</TargetDatabase>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <SuppressWarnings>
     </SuppressWarnings>

@@ -37,6 +37,8 @@ Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "CloudUri.Core.Modeling", "C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{3647B913-D711-4490-9E3C-3B2D482F9B95}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudUri.Services", "CloudUri.Services\CloudUri.Services.csproj", "{EA366E20-EB6B-4D0C-B4C4-9A5E171D62A1}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -92,15 +94,19 @@ Global
 		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E1973B-CA60-4311-973A-FEBC614F8686}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA366E20-EB6B-4D0C-B4C4-9A5E171D62A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA366E20-EB6B-4D0C-B4C4-9A5E171D62A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA366E20-EB6B-4D0C-B4C4-9A5E171D62A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA366E20-EB6B-4D0C-B4C4-9A5E171D62A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D451884C-C05A-4041-9A73-75911DACD4DE} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
-		{B9388C18-5E67-400C-AF9C-8279E0263873} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
 		{A54AE366-D451-400D-AC1C-8A5BC52D4CC4} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
 		{6B8E44C8-CB17-48FB-AC68-A0FE3885EA97} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+		{D451884C-C05A-4041-9A73-75911DACD4DE} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
+		{B9388C18-5E67-400C-AF9C-8279E0263873} = {3647B913-D711-4490-9E3C-3B2D482F9B95}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35

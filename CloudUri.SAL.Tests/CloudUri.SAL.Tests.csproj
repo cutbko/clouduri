@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AccountServiceTests.cs" />
+    <Compile Include="Services\DevicesServiceTests.cs" />
     <Compile Include="Services\FeedsServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>

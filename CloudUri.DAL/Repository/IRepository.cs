@@ -39,7 +39,7 @@ namespace CloudUri.DAL.Repository
         /// Returns all the items from repository
         /// </summary>
         /// <returns>A list of items</returns>
-        IEnumerable<TEntity> GetRecords();
+        IList<TEntity> GetRecords();
 
         /// <summary>
         /// Returns the single entity

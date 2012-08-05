@@ -21,36 +21,6 @@ namespace CloudUri.SAL.Services
             _dalContext = dalContext;
         }
 
-        public List<Device> GetDevicesByUsername(string userName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Device GetDeviceById(int key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateDevice(Device device)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int InsertDevice(Device device)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteDevice(int key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<DeviceType> GetDeviceTypes()
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Gets device by Key
         /// </summary>
@@ -59,7 +29,7 @@ namespace CloudUri.SAL.Services
         /// <returns>Device</returns>
         public Device GetDeviceById(int key, out string error)
         {
-            error = string.Empty;
+            error = null;
             try
             {
                 return _dalContext.DevicesRepository.GetById(key);
@@ -68,7 +38,7 @@ namespace CloudUri.SAL.Services
             {
                 Logger.Log.ErrorFormat("Error during reading device by Key : {0}, error: {1}", key, ex);
                 error = ex.Message;
-                return new Device();
+                return null;
             }
         }
 
@@ -161,11 +131,11 @@ namespace CloudUri.SAL.Services
             try
             {
                 List<Device> devices = _dalContext.DevicesRepository.GetDevicesForUser(name);
-                var deviceTypes = (List<DeviceType>) _dalContext.DeviceTypesRepository.GetRecords();
-                foreach (var device in devices)
+                IList<DeviceType> deviceTypes = _dalContext.DeviceTypesRepository.GetRecords();
+                foreach (Device device in devices)
                 {
                     Device device1 = device;
-                    device.Type = deviceTypes.First(i => i.Key == device1.TypeId);
+                    device.Type = deviceTypes.Single(i => i.Key == device1.TypeId);
                 }
                 return devices;
             }
