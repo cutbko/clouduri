@@ -1,6 +1,5 @@
 using System;
 using System.Globalization;
-using System.Text;
 using System.Web.Mvc;
 using CloudUri.Web.Models;
 
@@ -56,7 +55,7 @@ namespace CloudUri.Web.HtmlHelpers
 
         public static MvcHtmlString BuildPaginationWithSkippingPages(this HtmlHelper helper, PaginationModel paginationModel, Func<int, string> linkFunc)
         {
-            if (paginationModel.PagesTotal <= 5)
+            if (paginationModel.PagesTotal <= 8)
             {
                 return helper.BuildPagination(paginationModel, linkFunc);
             }
